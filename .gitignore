@@ -1,0 +1,31 @@
+# Environment & secrets
+.env
+.env.*
+!.env.example
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.venv/
+venv/
+
+# Sensitive / classified data — NEVER commit
+data/raw_pdfs/*.pdf
+data/logs/*.jsonl
+!data/raw_pdfs/.gitkeep
+!data/logs/.gitkeep
+
+# ML artifacts
+*.faiss
+*.index
+models/
+*.bin
+
+# IDE / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
