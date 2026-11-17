@@ -1,16 +1,20 @@
 # LLM-model-prov-
 Ky eshte nje LLM model prov
+Zhvillimi i një sistemi RAG (Retrieval-Augmented Generation): Ndërtova një asistent AI që kërkon në dokumente PDF të AAF-ve dhe ofron përgjigje të sakta duke shmangur halucinacionet.
+
+Kërkim Semantik (FAISS & Embeddings): Implementova kërkimin e avancuar në tekst duke përdorur modelin paraphrase-multilingual-MiniLM për të gjetur fragmentet më të sakta të dokumenteve.
+
+Integrimi i Gjenerimit të Gjuhës (LLM): Përdorova modelin Llama 3.2 3B Instruct (përmes HuggingFace API) për të gjeneruar përgjigje të bazuara rreptësisht vetëm në kontekstin e dhënë.
+
+Siguria dhe Auditimi (Guardrails): Krijova filtra sigurie që bllokojnë kërkesat operative/taktike dhe zbatova një sistem logimi (JSONL) për të gjurmuar çdo pyetje dhe burimin e saj.
+
+Ndërfaqja e Përdoruesit: Ndërtova një UI funksionale dhe të pastër me Gradio.
 # 🇦🇱 AAF Doctrine Intelligence System
 
 > Retrieval-Augmented Generation (RAG) assistant for querying Albanian Armed
 > Forces doctrine documents in natural language — with grounded citations,
 > safety guardrails, and full audit logging.
 
-[![Python 3.10+](https://img.shields.io/badge/python-3.10%2B-blue.svg)](https://www.python.org/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
-[![Gradio](https://img.shields.io/badge/UI-Gradio-orange.svg)](https://gradio.app/)
-
-![Demo](docs/screenshots/demo.png)
 
 ---
 
