@@ -1,2 +1,53 @@
 # LLM-model-prov-
 Ky eshte nje LLM model prov
+# 🇦🇱 AAF Doctrine Intelligence System
+
+> Retrieval-Augmented Generation (RAG) assistant for querying Albanian Armed
+> Forces doctrine documents in natural language — with grounded citations,
+> safety guardrails, and full audit logging.
+
+[![Python 3.10+](https://img.shields.io/badge/python-3.10%2B-blue.svg)](https://www.python.org/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![Gradio](https://img.shields.io/badge/UI-Gradio-orange.svg)](https://gradio.app/)
+
+![Demo](docs/screenshots/demo.png)
+
+---
+
+## Why this project exists
+
+Military doctrine is spread across hundreds of pages of PDF regulations.
+Manually searching them is slow and error-prone. This project lets an officer
+ask a **natural-language question in Albanian** and receive a **short, cited
+answer drawn only from the loaded doctrine** — never hallucinated.
+
+## Key Features
+
+| Feature | Implementation |
+|---|---|
+| **Grounded answers** | Retrieved context is injected into the prompt; the LLM is instructed to *refuse* if the answer isn't in the source. |
+| **Semantic search** | `sentence-transformers` (`paraphrase-multilingual-MiniLM-L12-v2`) + FAISS `IndexFlatIP` with cosine similarity. |
+| **Similarity threshold** | Hard 0.45 cutoff — low-confidence chunks never reach the model. |
+| **Safety guardrails** | Keyword blocklist for operational/tactical requests → deterministic refusal template. |
+| **Audit trail** | Every Q&A pair logged to JSONL with UTC timestamp and source documents. |
+| **Bilingual-ready** | Multilingual embedding model + Albanian prompt engineering. |
+
+## Architecture
+┌────────────┐ ┌─────────────┐ ┌──────────────┐ ┌──────────────┐
+│ PDFs │ → │ Text chunk │ → │ Embeddings │ → │ FAISS index │
+│ (doctrine) │ │ (section) │ │ (multilingual│ │ (cosine sim) │
+└────────────┘ └─────────────┘ │ MiniLM) │ └──────┬───────┘
+└──────────────┘ │
+┌────────────┐ ┌─────────────┐ ┌──────────────┐ │
+│ User query │ → │ Safety │ → │ Top-k │ ←────────┘
+│ (Albanian) │ │ filter │ │ retrieval │
+└────────────┘ └─────────────┘ └──────┬───────┘
+▼
+┌─────────────────────────────┐
+│ Llama-3.2-3B-Instruct │
+│ (grounded, temperature=0.01)│
+└──────────────┬──────────────┘
+▼
+┌────────────────────────┐
+│ Answer + cited sources │
+└────────────────────────┘
