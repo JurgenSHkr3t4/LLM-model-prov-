@@ -1,29 +1,18 @@
 # LLM-model-prov-
 Ky eshte nje LLM model prov
-Zhvillimi i një sistemi RAG (Retrieval-Augmented Generation): Ndërtova një asistent AI që kërkon në dokumente PDF të AAF-ve dhe ofron përgjigje të sakta duke shmangur halucinacionet.
+Zhvillimi i një sistemi RAG (Retrieval-Augmented Generation): Ndërtova një asistent AI që kërkon në dokumente PDF dhe ofron përgjigje të sakta duke shmangur halucinacionet.
 
 Kërkim Semantik (FAISS & Embeddings): Implementova kërkimin e avancuar në tekst duke përdorur modelin paraphrase-multilingual-MiniLM për të gjetur fragmentet më të sakta të dokumenteve.
 
-Integrimi i Gjenerimit të Gjuhës (LLM): Përdorova modelin Llama 3.2 3B Instruct (përmes HuggingFace API) për të gjeneruar përgjigje të bazuara rreptësisht vetëm në kontekstin e dhënë.
+Integrimi i Gjenerimit të Gjuhës (LLM): Përdora modelin Llama 3.2 3B Instruct për të gjeneruar përgjigje të bazuara rreptësisht vetëm në kontekstin e dhënë.
 
 Siguria dhe Auditimi (Guardrails): Krijova filtra sigurie që bllokojnë kërkesat operative/taktike dhe zbatova një sistem logimi (JSONL) për të gjurmuar çdo pyetje dhe burimin e saj.
 
 Ndërfaqja e Përdoruesit: Ndërtova një UI funksionale dhe të pastër me Gradio.
 # 🇦🇱 AAF Doctrine Intelligence System
 
-> Retrieval-Augmented Generation (RAG) assistant for querying Albanian Armed
-> Forces doctrine documents in natural language — with grounded citations,
-> safety guardrails, and full audit logging.
-
 
 ---
-
-## Why this project exists
-
-Military doctrine is spread across hundreds of pages of PDF regulations.
-Manually searching them is slow and error-prone. This project lets an officer
-ask a **natural-language question in Albanian** and receive a **short, cited
-answer drawn only from the loaded doctrine** — never hallucinated.
 
 ## Key Features
 
